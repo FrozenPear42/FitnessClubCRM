@@ -7,27 +7,27 @@ import java.sql.Timestamp;
 @Table(name = "Class", schema = "fitnessclub", catalog = "")
 @IdClass(ClazzEntityPK.class)
 public class ClazzEntity {
-    private int mIdClass;
+    private Integer mIdClass;
     private Integer mCost;
     private Timestamp mDate;
     private String mType;
     private Integer mSize;
     private Integer mDuration;
-    private int mFacilityIdFacility;
-    private int mInstructorIdInstructor;
+    private Integer mFacilityIdFacility;
+    private Integer mInstructorIdInstructor;
 
     @Id
-    @Column(name = "idClass")
-    public int getIdClass() {
+    @Column(name = "idClass", nullable = false)
+    public Integer getIdClass() {
         return mIdClass;
     }
 
-    public void setIdClass(int idClass) {
+    public void setIdClass(Integer idClass) {
         mIdClass = idClass;
     }
 
     @Basic
-    @Column(name = "cost")
+    @Column(name = "cost", nullable = true)
     public Integer getCost() {
         return mCost;
     }
@@ -37,7 +37,7 @@ public class ClazzEntity {
     }
 
     @Basic
-    @Column(name = "date")
+    @Column(name = "date", nullable = true)
     public Timestamp getDate() {
         return mDate;
     }
@@ -47,7 +47,7 @@ public class ClazzEntity {
     }
 
     @Basic
-    @Column(name = "type")
+    @Column(name = "type", nullable = true, length = 45)
     public String getType() {
         return mType;
     }
@@ -57,7 +57,7 @@ public class ClazzEntity {
     }
 
     @Basic
-    @Column(name = "size")
+    @Column(name = "size", nullable = true)
     public Integer getSize() {
         return mSize;
     }
@@ -67,7 +67,7 @@ public class ClazzEntity {
     }
 
     @Basic
-    @Column(name = "duration")
+    @Column(name = "duration", nullable = true)
     public Integer getDuration() {
         return mDuration;
     }
@@ -77,22 +77,22 @@ public class ClazzEntity {
     }
 
     @Id
-    @Column(name = "Facility_idFacility")
-    public int getFacilityIdFacility() {
+    @Column(name = "Facility_idFacility", nullable = false)
+    public Integer getFacilityIdFacility() {
         return mFacilityIdFacility;
     }
 
-    public void setFacilityIdFacility(int facilityIdFacility) {
+    public void setFacilityIdFacility(Integer facilityIdFacility) {
         mFacilityIdFacility = facilityIdFacility;
     }
 
     @Id
-    @Column(name = "Instructor_idInstructor")
-    public int getInstructorIdInstructor() {
+    @Column(name = "Instructor_idInstructor", nullable = false)
+    public Integer getInstructorIdInstructor() {
         return mInstructorIdInstructor;
     }
 
-    public void setInstructorIdInstructor(int instructorIdInstructor) {
+    public void setInstructorIdInstructor(Integer instructorIdInstructor) {
         mInstructorIdInstructor = instructorIdInstructor;
     }
 
@@ -103,28 +103,30 @@ public class ClazzEntity {
 
         ClazzEntity that = (ClazzEntity) o;
 
-        if (mIdClass != that.mIdClass) return false;
-        if (mFacilityIdFacility != that.mFacilityIdFacility) return false;
-        if (mInstructorIdInstructor != that.mInstructorIdInstructor) return false;
+        if (mIdClass != null ? !mIdClass.equals(that.mIdClass) : that.mIdClass != null) return false;
         if (mCost != null ? !mCost.equals(that.mCost) : that.mCost != null) return false;
         if (mDate != null ? !mDate.equals(that.mDate) : that.mDate != null) return false;
         if (mType != null ? !mType.equals(that.mType) : that.mType != null) return false;
         if (mSize != null ? !mSize.equals(that.mSize) : that.mSize != null) return false;
         if (mDuration != null ? !mDuration.equals(that.mDuration) : that.mDuration != null) return false;
+        if (mFacilityIdFacility != null ? !mFacilityIdFacility.equals(that.mFacilityIdFacility) : that.mFacilityIdFacility != null)
+            return false;
+        if (mInstructorIdInstructor != null ? !mInstructorIdInstructor.equals(that.mInstructorIdInstructor) : that.mInstructorIdInstructor != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = mIdClass;
+        int result = mIdClass != null ? mIdClass.hashCode() : 0;
         result = 31 * result + (mCost != null ? mCost.hashCode() : 0);
         result = 31 * result + (mDate != null ? mDate.hashCode() : 0);
         result = 31 * result + (mType != null ? mType.hashCode() : 0);
         result = 31 * result + (mSize != null ? mSize.hashCode() : 0);
         result = 31 * result + (mDuration != null ? mDuration.hashCode() : 0);
-        result = 31 * result + mFacilityIdFacility;
-        result = 31 * result + mInstructorIdInstructor;
+        result = 31 * result + (mFacilityIdFacility != null ? mFacilityIdFacility.hashCode() : 0);
+        result = 31 * result + (mInstructorIdInstructor != null ? mInstructorIdInstructor.hashCode() : 0);
         return result;
     }
 }

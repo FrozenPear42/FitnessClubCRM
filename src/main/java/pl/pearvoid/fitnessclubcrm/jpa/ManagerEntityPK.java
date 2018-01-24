@@ -5,20 +5,20 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 public class ManagerEntityPK implements Serializable {
-    private int mIdManager;
+    private Integer mIdManager;
     private String mStaffSsn;
 
-    @Column(name = "idManager")
+    @Column(name = "idManager", nullable = false)
     @Id
-    public int getIdManager() {
+    public Integer getIdManager() {
         return mIdManager;
     }
 
-    public void setIdManager(int idManager) {
+    public void setIdManager(Integer idManager) {
         mIdManager = idManager;
     }
 
-    @Column(name = "Staff_SSN")
+    @Column(name = "Staff_SSN", nullable = false, length = 45)
     @Id
     public String getStaffSsn() {
         return mStaffSsn;
@@ -35,7 +35,7 @@ public class ManagerEntityPK implements Serializable {
 
         ManagerEntityPK that = (ManagerEntityPK) o;
 
-        if (mIdManager != that.mIdManager) return false;
+        if (mIdManager != null ? !mIdManager.equals(that.mIdManager) : that.mIdManager != null) return false;
         if (mStaffSsn != null ? !mStaffSsn.equals(that.mStaffSsn) : that.mStaffSsn != null) return false;
 
         return true;
@@ -43,7 +43,7 @@ public class ManagerEntityPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = mIdManager;
+        int result = mIdManager != null ? mIdManager.hashCode() : 0;
         result = 31 * result + (mStaffSsn != null ? mStaffSsn.hashCode() : 0);
         return result;
     }

@@ -6,26 +6,26 @@ import javax.persistence.*;
 @Table(name = "Customer_has_Class", schema = "fitnessclub", catalog = "")
 @IdClass(CustomerHasClassEntityPK.class)
 public class CustomerHasClassEntity {
-    private int mCustomerIdCustomer;
-    private int mClassIdClass;
+    private Integer mCustomerIdCustomer;
+    private Integer mClassIdClass;
 
     @Id
-    @Column(name = "Customer_idCustomer")
-    public int getCustomerIdCustomer() {
+    @Column(name = "Customer_idCustomer", nullable = false)
+    public Integer getCustomerIdCustomer() {
         return mCustomerIdCustomer;
     }
 
-    public void setCustomerIdCustomer(int customerIdCustomer) {
+    public void setCustomerIdCustomer(Integer customerIdCustomer) {
         mCustomerIdCustomer = customerIdCustomer;
     }
 
     @Id
-    @Column(name = "Class_idClass")
-    public int getClassIdClass() {
+    @Column(name = "Class_idClass", nullable = false)
+    public Integer getClassIdClass() {
         return mClassIdClass;
     }
 
-    public void setClassIdClass(int classIdClass) {
+    public void setClassIdClass(Integer classIdClass) {
         mClassIdClass = classIdClass;
     }
 
@@ -36,16 +36,18 @@ public class CustomerHasClassEntity {
 
         CustomerHasClassEntity that = (CustomerHasClassEntity) o;
 
-        if (mCustomerIdCustomer != that.mCustomerIdCustomer) return false;
-        if (mClassIdClass != that.mClassIdClass) return false;
+        if (mCustomerIdCustomer != null ? !mCustomerIdCustomer.equals(that.mCustomerIdCustomer) : that.mCustomerIdCustomer != null)
+            return false;
+        if (mClassIdClass != null ? !mClassIdClass.equals(that.mClassIdClass) : that.mClassIdClass != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = mCustomerIdCustomer;
-        result = 31 * result + mClassIdClass;
+        int result = mCustomerIdCustomer != null ? mCustomerIdCustomer.hashCode() : 0;
+        result = 31 * result + (mClassIdClass != null ? mClassIdClass.hashCode() : 0);
         return result;
     }
 }

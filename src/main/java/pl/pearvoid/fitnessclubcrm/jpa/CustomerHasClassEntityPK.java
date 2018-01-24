@@ -5,26 +5,26 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 public class CustomerHasClassEntityPK implements Serializable {
-    private int mCustomerIdCustomer;
-    private int mClassIdClass;
+    private Integer mCustomerIdCustomer;
+    private Integer mClassIdClass;
 
-    @Column(name = "Customer_idCustomer")
+    @Column(name = "Customer_idCustomer", nullable = false)
     @Id
-    public int getCustomerIdCustomer() {
+    public Integer getCustomerIdCustomer() {
         return mCustomerIdCustomer;
     }
 
-    public void setCustomerIdCustomer(int customerIdCustomer) {
+    public void setCustomerIdCustomer(Integer customerIdCustomer) {
         mCustomerIdCustomer = customerIdCustomer;
     }
 
-    @Column(name = "Class_idClass")
+    @Column(name = "Class_idClass", nullable = false)
     @Id
-    public int getClassIdClass() {
+    public Integer getClassIdClass() {
         return mClassIdClass;
     }
 
-    public void setClassIdClass(int classIdClass) {
+    public void setClassIdClass(Integer classIdClass) {
         mClassIdClass = classIdClass;
     }
 
@@ -35,16 +35,18 @@ public class CustomerHasClassEntityPK implements Serializable {
 
         CustomerHasClassEntityPK that = (CustomerHasClassEntityPK) o;
 
-        if (mCustomerIdCustomer != that.mCustomerIdCustomer) return false;
-        if (mClassIdClass != that.mClassIdClass) return false;
+        if (mCustomerIdCustomer != null ? !mCustomerIdCustomer.equals(that.mCustomerIdCustomer) : that.mCustomerIdCustomer != null)
+            return false;
+        if (mClassIdClass != null ? !mClassIdClass.equals(that.mClassIdClass) : that.mClassIdClass != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = mCustomerIdCustomer;
-        result = 31 * result + mClassIdClass;
+        int result = mCustomerIdCustomer != null ? mCustomerIdCustomer.hashCode() : 0;
+        result = 31 * result + (mClassIdClass != null ? mClassIdClass.hashCode() : 0);
         return result;
     }
 }

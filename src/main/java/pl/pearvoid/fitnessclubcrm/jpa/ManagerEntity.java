@@ -6,21 +6,21 @@ import javax.persistence.*;
 @Table(name = "Manager", schema = "fitnessclub", catalog = "")
 @IdClass(ManagerEntityPK.class)
 public class ManagerEntity {
-    private int mIdManager;
+    private Integer mIdManager;
     private String mStaffSsn;
 
     @Id
-    @Column(name = "idManager")
-    public int getIdManager() {
+    @Column(name = "idManager", nullable = false)
+    public Integer getIdManager() {
         return mIdManager;
     }
 
-    public void setIdManager(int idManager) {
+    public void setIdManager(Integer idManager) {
         mIdManager = idManager;
     }
 
     @Id
-    @Column(name = "Staff_SSN")
+    @Column(name = "Staff_SSN", nullable = false, length = 45)
     public String getStaffSsn() {
         return mStaffSsn;
     }
@@ -36,7 +36,7 @@ public class ManagerEntity {
 
         ManagerEntity that = (ManagerEntity) o;
 
-        if (mIdManager != that.mIdManager) return false;
+        if (mIdManager != null ? !mIdManager.equals(that.mIdManager) : that.mIdManager != null) return false;
         if (mStaffSsn != null ? !mStaffSsn.equals(that.mStaffSsn) : that.mStaffSsn != null) return false;
 
         return true;
@@ -44,7 +44,7 @@ public class ManagerEntity {
 
     @Override
     public int hashCode() {
-        int result = mIdManager;
+        int result = mIdManager != null ? mIdManager.hashCode() : 0;
         result = 31 * result + (mStaffSsn != null ? mStaffSsn.hashCode() : 0);
         return result;
     }

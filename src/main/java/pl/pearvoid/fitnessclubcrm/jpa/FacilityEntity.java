@@ -5,23 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Facility", schema = "fitnessclub", catalog = "")
 public class FacilityEntity {
-    private int mIdFacility;
+    private Integer mIdFacility;
     private String mName;
     private String mType;
     private String mCapacity;
 
     @Id
-    @Column(name = "idFacility")
-    public int getIdFacility() {
+    @Column(name = "idFacility", nullable = false)
+    public Integer getIdFacility() {
         return mIdFacility;
     }
 
-    public void setIdFacility(int idFacility) {
+    public void setIdFacility(Integer idFacility) {
         mIdFacility = idFacility;
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 45)
     public String getName() {
         return mName;
     }
@@ -31,7 +31,7 @@ public class FacilityEntity {
     }
 
     @Basic
-    @Column(name = "type")
+    @Column(name = "type", nullable = true, length = 45)
     public String getType() {
         return mType;
     }
@@ -41,7 +41,7 @@ public class FacilityEntity {
     }
 
     @Basic
-    @Column(name = "capacity")
+    @Column(name = "capacity", nullable = true, length = 45)
     public String getCapacity() {
         return mCapacity;
     }
@@ -57,7 +57,7 @@ public class FacilityEntity {
 
         FacilityEntity that = (FacilityEntity) o;
 
-        if (mIdFacility != that.mIdFacility) return false;
+        if (mIdFacility != null ? !mIdFacility.equals(that.mIdFacility) : that.mIdFacility != null) return false;
         if (mName != null ? !mName.equals(that.mName) : that.mName != null) return false;
         if (mType != null ? !mType.equals(that.mType) : that.mType != null) return false;
         if (mCapacity != null ? !mCapacity.equals(that.mCapacity) : that.mCapacity != null) return false;
@@ -67,7 +67,7 @@ public class FacilityEntity {
 
     @Override
     public int hashCode() {
-        int result = mIdFacility;
+        int result = mIdFacility != null ? mIdFacility.hashCode() : 0;
         result = 31 * result + (mName != null ? mName.hashCode() : 0);
         result = 31 * result + (mType != null ? mType.hashCode() : 0);
         result = 31 * result + (mCapacity != null ? mCapacity.hashCode() : 0);

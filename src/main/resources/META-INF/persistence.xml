@@ -27,4 +27,6 @@
             <property name="hbm2ddl.auto" value="update" />
         </properties>
     </persistence-unit>
+    <persistence-unit name="moreWoriningUnit"/>
+    <persistence-unit name="persistenceUnit"/>
 </persistence>

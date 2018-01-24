@@ -6,23 +6,23 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "Membership", schema = "fitnessclub", catalog = "")
 public class MembershipEntity {
-    private int mIdMembership;
+    private Integer mIdMembership;
     private Timestamp mCreationDate;
     private Timestamp mExpireDate;
     private String mLevel;
 
     @Id
-    @Column(name = "idMembership")
-    public int getIdMembership() {
+    @Column(name = "idMembership", nullable = false)
+    public Integer getIdMembership() {
         return mIdMembership;
     }
 
-    public void setIdMembership(int idMembership) {
+    public void setIdMembership(Integer idMembership) {
         mIdMembership = idMembership;
     }
 
     @Basic
-    @Column(name = "creationDate")
+    @Column(name = "creationDate", nullable = true)
     public Timestamp getCreationDate() {
         return mCreationDate;
     }
@@ -32,7 +32,7 @@ public class MembershipEntity {
     }
 
     @Basic
-    @Column(name = "expireDate")
+    @Column(name = "expireDate", nullable = true)
     public Timestamp getExpireDate() {
         return mExpireDate;
     }
@@ -42,7 +42,7 @@ public class MembershipEntity {
     }
 
     @Basic
-    @Column(name = "level")
+    @Column(name = "level", nullable = true, length = 45)
     public String getLevel() {
         return mLevel;
     }
@@ -58,7 +58,8 @@ public class MembershipEntity {
 
         MembershipEntity that = (MembershipEntity) o;
 
-        if (mIdMembership != that.mIdMembership) return false;
+        if (mIdMembership != null ? !mIdMembership.equals(that.mIdMembership) : that.mIdMembership != null)
+            return false;
         if (mCreationDate != null ? !mCreationDate.equals(that.mCreationDate) : that.mCreationDate != null)
             return false;
         if (mExpireDate != null ? !mExpireDate.equals(that.mExpireDate) : that.mExpireDate != null) return false;
@@ -69,7 +70,7 @@ public class MembershipEntity {
 
     @Override
     public int hashCode() {
-        int result = mIdMembership;
+        int result = mIdMembership != null ? mIdMembership.hashCode() : 0;
         result = 31 * result + (mCreationDate != null ? mCreationDate.hashCode() : 0);
         result = 31 * result + (mExpireDate != null ? mExpireDate.hashCode() : 0);
         result = 31 * result + (mLevel != null ? mLevel.hashCode() : 0);

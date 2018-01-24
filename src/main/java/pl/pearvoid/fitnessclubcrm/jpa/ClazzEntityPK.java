@@ -5,37 +5,37 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 public class ClazzEntityPK implements Serializable {
-    private int mIdClass;
-    private int mFacilityIdFacility;
-    private int mInstructorIdInstructor;
+    private Integer mIdClass;
+    private Integer mFacilityIdFacility;
+    private Integer mInstructorIdInstructor;
 
-    @Column(name = "idClass")
+    @Column(name = "idClass", nullable = false)
     @Id
-    public int getIdClass() {
+    public Integer getIdClass() {
         return mIdClass;
     }
 
-    public void setIdClass(int idClass) {
+    public void setIdClass(Integer idClass) {
         mIdClass = idClass;
     }
 
-    @Column(name = "Facility_idFacility")
+    @Column(name = "Facility_idFacility", nullable = false)
     @Id
-    public int getFacilityIdFacility() {
+    public Integer getFacilityIdFacility() {
         return mFacilityIdFacility;
     }
 
-    public void setFacilityIdFacility(int facilityIdFacility) {
+    public void setFacilityIdFacility(Integer facilityIdFacility) {
         mFacilityIdFacility = facilityIdFacility;
     }
 
-    @Column(name = "Instructor_idInstructor")
+    @Column(name = "Instructor_idInstructor", nullable = false)
     @Id
-    public int getInstructorIdInstructor() {
+    public Integer getInstructorIdInstructor() {
         return mInstructorIdInstructor;
     }
 
-    public void setInstructorIdInstructor(int instructorIdInstructor) {
+    public void setInstructorIdInstructor(Integer instructorIdInstructor) {
         mInstructorIdInstructor = instructorIdInstructor;
     }
 
@@ -46,18 +46,20 @@ public class ClazzEntityPK implements Serializable {
 
         ClazzEntityPK that = (ClazzEntityPK) o;
 
-        if (mIdClass != that.mIdClass) return false;
-        if (mFacilityIdFacility != that.mFacilityIdFacility) return false;
-        if (mInstructorIdInstructor != that.mInstructorIdInstructor) return false;
+        if (mIdClass != null ? !mIdClass.equals(that.mIdClass) : that.mIdClass != null) return false;
+        if (mFacilityIdFacility != null ? !mFacilityIdFacility.equals(that.mFacilityIdFacility) : that.mFacilityIdFacility != null)
+            return false;
+        if (mInstructorIdInstructor != null ? !mInstructorIdInstructor.equals(that.mInstructorIdInstructor) : that.mInstructorIdInstructor != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = mIdClass;
-        result = 31 * result + mFacilityIdFacility;
-        result = 31 * result + mInstructorIdInstructor;
+        int result = mIdClass != null ? mIdClass.hashCode() : 0;
+        result = 31 * result + (mFacilityIdFacility != null ? mFacilityIdFacility.hashCode() : 0);
+        result = 31 * result + (mInstructorIdInstructor != null ? mInstructorIdInstructor.hashCode() : 0);
         return result;
     }
 }

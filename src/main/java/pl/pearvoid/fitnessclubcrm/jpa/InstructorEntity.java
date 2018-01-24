@@ -6,22 +6,22 @@ import javax.persistence.*;
 @Table(name = "Instructor", schema = "fitnessclub", catalog = "")
 @IdClass(InstructorEntityPK.class)
 public class InstructorEntity {
-    private int mIdInstructor;
+    private Integer mIdInstructor;
     private String mCertification;
     private String mStaffSsn;
 
     @Id
-    @Column(name = "idInstructor")
-    public int getIdInstructor() {
+    @Column(name = "idInstructor", nullable = false)
+    public Integer getIdInstructor() {
         return mIdInstructor;
     }
 
-    public void setIdInstructor(int idInstructor) {
+    public void setIdInstructor(Integer idInstructor) {
         mIdInstructor = idInstructor;
     }
 
     @Basic
-    @Column(name = "certification")
+    @Column(name = "certification", nullable = true, length = 45)
     public String getCertification() {
         return mCertification;
     }
@@ -31,7 +31,7 @@ public class InstructorEntity {
     }
 
     @Id
-    @Column(name = "Staff_SSN")
+    @Column(name = "Staff_SSN", nullable = false, length = 45)
     public String getStaffSsn() {
         return mStaffSsn;
     }
@@ -47,7 +47,8 @@ public class InstructorEntity {
 
         InstructorEntity that = (InstructorEntity) o;
 
-        if (mIdInstructor != that.mIdInstructor) return false;
+        if (mIdInstructor != null ? !mIdInstructor.equals(that.mIdInstructor) : that.mIdInstructor != null)
+            return false;
         if (mCertification != null ? !mCertification.equals(that.mCertification) : that.mCertification != null)
             return false;
         if (mStaffSsn != null ? !mStaffSsn.equals(that.mStaffSsn) : that.mStaffSsn != null) return false;
@@ -57,7 +58,7 @@ public class InstructorEntity {
 
     @Override
     public int hashCode() {
-        int result = mIdInstructor;
+        int result = mIdInstructor != null ? mIdInstructor.hashCode() : 0;
         result = 31 * result + (mCertification != null ? mCertification.hashCode() : 0);
         result = 31 * result + (mStaffSsn != null ? mStaffSsn.hashCode() : 0);
         return result;

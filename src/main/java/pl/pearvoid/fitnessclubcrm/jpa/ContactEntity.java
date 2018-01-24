@@ -5,23 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Contact", schema = "fitnessclub", catalog = "")
 public class ContactEntity {
-    private int mIdContact;
+    private Integer mIdContact;
     private String mAddress;
     private String mPhone;
     private String mEmail;
 
     @Id
-    @Column(name = "idContact")
-    public int getIdContact() {
+    @Column(name = "idContact", nullable = false)
+    public Integer getIdContact() {
         return mIdContact;
     }
 
-    public void setIdContact(int idContact) {
+    public void setIdContact(Integer idContact) {
         mIdContact = idContact;
     }
 
     @Basic
-    @Column(name = "address")
+    @Column(name = "address", nullable = true, length = 45)
     public String getAddress() {
         return mAddress;
     }
@@ -31,7 +31,7 @@ public class ContactEntity {
     }
 
     @Basic
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = true, length = 45)
     public String getPhone() {
         return mPhone;
     }
@@ -41,7 +41,7 @@ public class ContactEntity {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = true, length = 45)
     public String getEmail() {
         return mEmail;
     }
@@ -57,7 +57,7 @@ public class ContactEntity {
 
         ContactEntity that = (ContactEntity) o;
 
-        if (mIdContact != that.mIdContact) return false;
+        if (mIdContact != null ? !mIdContact.equals(that.mIdContact) : that.mIdContact != null) return false;
         if (mAddress != null ? !mAddress.equals(that.mAddress) : that.mAddress != null) return false;
         if (mPhone != null ? !mPhone.equals(that.mPhone) : that.mPhone != null) return false;
         if (mEmail != null ? !mEmail.equals(that.mEmail) : that.mEmail != null) return false;
@@ -67,7 +67,7 @@ public class ContactEntity {
 
     @Override
     public int hashCode() {
-        int result = mIdContact;
+        int result = mIdContact != null ? mIdContact.hashCode() : 0;
         result = 31 * result + (mAddress != null ? mAddress.hashCode() : 0);
         result = 31 * result + (mPhone != null ? mPhone.hashCode() : 0);
         result = 31 * result + (mEmail != null ? mEmail.hashCode() : 0);

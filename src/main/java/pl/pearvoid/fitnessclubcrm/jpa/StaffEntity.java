@@ -10,9 +10,11 @@ public class StaffEntity {
     private String mName;
     private Date mBirthdate;
     private Integer mAge;
+    private Integer mManagerIdManager;
+    private String mManagerStaffSsn;
 
     @Id
-    @Column(name = "SSN")
+    @Column(name = "SSN", nullable = false, length = 45)
     public String getSsn() {
         return mSsn;
     }
@@ -22,7 +24,7 @@ public class StaffEntity {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 45)
     public String getName() {
         return mName;
     }
@@ -32,7 +34,7 @@ public class StaffEntity {
     }
 
     @Basic
-    @Column(name = "birthdate")
+    @Column(name = "birthdate", nullable = true)
     public Date getBirthdate() {
         return mBirthdate;
     }
@@ -42,13 +44,33 @@ public class StaffEntity {
     }
 
     @Basic
-    @Column(name = "age")
+    @Column(name = "age", nullable = true)
     public Integer getAge() {
         return mAge;
     }
 
     public void setAge(Integer age) {
         mAge = age;
+    }
+
+    @Basic
+    @Column(name = "Manager_idManager", nullable = false)
+    public Integer getManagerIdManager() {
+        return mManagerIdManager;
+    }
+
+    public void setManagerIdManager(Integer managerIdManager) {
+        mManagerIdManager = managerIdManager;
+    }
+
+    @Basic
+    @Column(name = "Manager_Staff_SSN", nullable = false, length = 45)
+    public String getManagerStaffSsn() {
+        return mManagerStaffSsn;
+    }
+
+    public void setManagerStaffSsn(String managerStaffSsn) {
+        mManagerStaffSsn = managerStaffSsn;
     }
 
     @Override
@@ -62,6 +84,10 @@ public class StaffEntity {
         if (mName != null ? !mName.equals(that.mName) : that.mName != null) return false;
         if (mBirthdate != null ? !mBirthdate.equals(that.mBirthdate) : that.mBirthdate != null) return false;
         if (mAge != null ? !mAge.equals(that.mAge) : that.mAge != null) return false;
+        if (mManagerIdManager != null ? !mManagerIdManager.equals(that.mManagerIdManager) : that.mManagerIdManager != null)
+            return false;
+        if (mManagerStaffSsn != null ? !mManagerStaffSsn.equals(that.mManagerStaffSsn) : that.mManagerStaffSsn != null)
+            return false;
 
         return true;
     }
@@ -72,6 +98,8 @@ public class StaffEntity {
         result = 31 * result + (mName != null ? mName.hashCode() : 0);
         result = 31 * result + (mBirthdate != null ? mBirthdate.hashCode() : 0);
         result = 31 * result + (mAge != null ? mAge.hashCode() : 0);
+        result = 31 * result + (mManagerIdManager != null ? mManagerIdManager.hashCode() : 0);
+        result = 31 * result + (mManagerStaffSsn != null ? mManagerStaffSsn.hashCode() : 0);
         return result;
     }
 }
