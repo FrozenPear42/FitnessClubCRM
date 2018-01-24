@@ -11,7 +11,8 @@ public class ContactEntity {
     private String mEmail;
 
     @Id
-    @Column(name = "idContact", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idContact", nullable = false, unique = true)
     public Integer getIdContact() {
         return mIdContact;
     }
