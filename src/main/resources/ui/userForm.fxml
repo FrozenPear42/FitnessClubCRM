@@ -14,7 +14,7 @@
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <VBox prefHeight="400.0" prefWidth="300.0">
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgba(255,255,255,0.8)">
-                    <Label text="Name Surname" />
+                    <Label text="Full Name" />
                     <TextField />
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color:  rgba(255,255,255,0.8)">
@@ -34,7 +34,7 @@
                     <TextField />
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color:  rgba(255,255,255,0.8)">
-                    <Label text="email" />
+                    <Label text="Email" />
                     <TextField />
                 </VBox>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="657.0" style="-fx-background-color:  rgba(255,255,255,0.8)" BorderPane.alignment="CENTER">
