@@ -19,31 +19,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/main.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
-//        EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
-//        EntityTransaction transaction = null;
-//        try {
-//            transaction = manager.getTransaction();
-//            transaction.begin();
-//
-//            CustomerEntity customer = new CustomerEntity();
-//            customer.setName("xDDDDDDDDDDDDD");
-//
-//            manager.persist(customer);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null)
-//                transaction.rollback();
-//            e.printStackTrace();
-//        } finally {
-//            manager.close();
-//        }
-
     }
 
 
