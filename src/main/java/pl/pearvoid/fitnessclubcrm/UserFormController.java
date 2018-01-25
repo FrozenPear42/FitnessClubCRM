@@ -18,6 +18,7 @@ public class UserFormController {
     public TextField zipcode;
     public TextField email;
     public BorderPane root;
+    public TextField phone;
 
     public void onBack(ActionEvent actionEvent) {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -25,7 +26,6 @@ public class UserFormController {
     }
 
     public void onSubmit(ActionEvent actionEvent) {
-
 
         ServiceProvider serviceProvider = new ServiceProvider();
 
@@ -39,7 +39,7 @@ public class UserFormController {
         ContactEntity contact = new ContactEntity();
         contact.setAddress(String.format("%s, %s %s", address.getText(), zipcode.getText(), city.getText()));
         contact.setEmail(email.getText());
-        contact.setPhone("43242323424");
+        contact.setPhone(phone.getText());
 
         serviceProvider.addUser(customer, contact);
 
