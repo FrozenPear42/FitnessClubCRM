@@ -24,44 +24,6 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-        ServiceProvider serviceProvider = new ServiceProvider();
-
-        CustomerEntity customer = new CustomerEntity();
-        customer.setName("elo elo elo");
-
-        Instant now = Instant.now();
-        customer.setFirstVisitDate(Timestamp.from(now));
-        customer.setAge(69);
-
-        ContactEntity contact = new ContactEntity();
-        contact.setAddress("bzdziszewo");
-        contact.setEmail("wo@wo.pl");
-        contact.setPhone("43242323424");
-
-        serviceProvider.addUser(customer, contact);
-
-
-
-//        EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
-//        EntityTransaction transaction = null;
-//        try {
-//            transaction = manager.getTransaction();
-//            transaction.begin();
-//
-//            CustomerEntity customer = new CustomerEntity();
-//            customer.setName("xDDDDDDDDDDDDD");
-//
-//            manager.persist(customer);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null)
-//                transaction.rollback();
-//            e.printStackTrace();
-//        } finally {
-//            manager.close();
-//        }
-
     }
 
 
