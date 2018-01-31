@@ -7,8 +7,6 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="FitnessClubPU" value="0e9053cb-89f6-4340-bebe-90c000cb3e86" />
-          <factory-entry name="moreWoriningUnit" />
-          <factory-entry name="persistenceUnit" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

@@ -19,7 +19,7 @@ public class MainController {
 
     public void onCustomerButton(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/ui/userForm.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ui/userList.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Customer Details");
             stage.setScene(new Scene(root));
