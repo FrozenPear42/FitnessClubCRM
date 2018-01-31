@@ -1,5 +1,6 @@
 package pl.pearvoid.fitnessclubcrm;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -11,32 +12,47 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import pl.pearvoid.fitnessclubcrm.jpa.CustomerEntity;
+import pl.pearvoid.fitnessclubcrm.jpa.LastMonthClassesEntity;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Date;
 
 public class LastMonthReportController {
     public TableView userTable;
-    private Collection<CustomerEntity> mCustomers;
+    private Collection<LastMonthClassesEntity> mEntities;
 
     public void initialize() {
-        mCustomers = new ServiceProvider().getUsers();
+        mEntities = new ServiceProvider().getLastMonthClasses();
 
-        TableColumn<CustomerEntity, Integer> idCol = new TableColumn<>();
-        idCol.setText("ID");
-        idCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getIdCustomer()));
+        TableColumn<LastMonthClassesEntity, Integer> idCol = new TableColumn<>();
+        idCol.setText("Class ID");
+        idCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getIdClass()));
 
-        TableColumn<CustomerEntity, String> nameCol = new TableColumn<>();
-        nameCol.setText("Name");
-        nameCol.setCellValueFactory(cellValue -> new ReadOnlyStringWrapper(cellValue.getValue().getName()));
+        TableColumn<LastMonthClassesEntity, Integer> costCol = new TableColumn<>();
+        costCol.setText("Cost");
+        costCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getCost()));
 
-        TableColumn<CustomerEntity, Integer> ageCol = new TableColumn<>();
-        ageCol.setText("Age");
-        ageCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getAge()));
+        TableColumn<LastMonthClassesEntity, Date> dateCol = new TableColumn<>();
+        dateCol.setText("Date");
+        dateCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getDate()));
 
-        userTable.getColumns().addAll(idCol, nameCol, ageCol);
+        TableColumn<LastMonthClassesEntity, String> typeCol = new TableColumn<>();
+        typeCol.setText("Type");
+        typeCol.setCellValueFactory(cellValue -> new ReadOnlyObjectWrapper<>(cellValue.getValue().getType()));
 
-        userTable.setItems(FXCollections.observableArrayList(mCustomers));
+        TableColumn<LastMonthClassesEntity, Integer> sizeCol = new TableColumn<>();
+        sizeCol.setText("Size");
+        sizeCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getSize()));
+
+        TableColumn<LastMonthClassesEntity, Integer> durationCol = new TableColumn<>();
+        durationCol.setText("Duration");
+        durationCol.setCellValueFactory(cellValue -> new SimpleObjectProperty<>(cellValue.getValue().getDuration()));
+
+
+        userTable.getColumns().addAll(idCol, costCol,dateCol, typeCol, sizeCol, durationCol);
+
+        userTable.setItems(FXCollections.observableArrayList(mEntities));
 
     }
 
