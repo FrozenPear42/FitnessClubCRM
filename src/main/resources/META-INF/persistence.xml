@@ -16,6 +16,7 @@
         <class>pl.pearvoid.fitnessclubcrm.jpa.ManagerEntity</class>
         <class>pl.pearvoid.fitnessclubcrm.jpa.MembershipEntity</class>
         <class>pl.pearvoid.fitnessclubcrm.jpa.StaffEntity</class>
+        <class>pl.pearvoid.fitnessclubcrm.jpa.LastMonthClassesEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://fitnessclub.cpqdo11zlb9b.us-east-1.rds.amazonaws.com:3306/fitnessclub" />
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />

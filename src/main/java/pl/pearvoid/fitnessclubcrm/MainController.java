@@ -14,7 +14,7 @@ public class MainController {
     public Button classesButton;
     public Button staffButton;
     public Button customersButton;
-    public Button exitButton;
+    public Button reportButton;
 
 
     public void onCustomerButton(ActionEvent actionEvent) {
@@ -37,7 +37,15 @@ public class MainController {
 
     }
 
-    public void onExitButton(ActionEvent actionEvent) {
-
+    public void onReportButton(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ui/reportLastMonthClasses.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Last month report");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
