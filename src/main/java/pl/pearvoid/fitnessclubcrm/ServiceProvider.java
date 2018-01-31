@@ -3,10 +3,9 @@ package pl.pearvoid.fitnessclubcrm;
 import pl.pearvoid.fitnessclubcrm.jpa.ContactEntity;
 import pl.pearvoid.fitnessclubcrm.jpa.CustomerEntity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ServiceProvider {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
@@ -33,4 +32,20 @@ public class ServiceProvider {
             manager.close();
         }
     }
+
+    public Collection<CustomerEntity> getUsers() {
+        EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        ArrayList<CustomerEntity> entities = new ArrayList<>();
+        try {
+            entities = (ArrayList<CustomerEntity>) manager.createQuery("from CustomerEntity")
+                    .setMaxResults(100)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            manager.close();
+        }
+        return entities;
+    }
+
 }

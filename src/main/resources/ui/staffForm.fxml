@@ -1,40 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
+<BorderPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="468.0"
+            minWidth="641.0" prefHeight="468.0" prefWidth="658.0"
+            style="-fx-background-image: url(https://duzekubki.pl/wp-content/uploads/2016/07/W002c.jpg); -fx-background-repeat: no-repeat;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            >
+    <!--fx:controller="pl.pearvoid.fitnessclubcrm.UserFormController"-->
+    <center>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(https://duzekubki.pl/wp-content/uploads/2016/07/W002c.jpg);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Label" />
-                        <TextField />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-   </center>
-   <top>
-      <Label text="Label" BorderPane.alignment="CENTER" />
-   </top>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-      </HBox>
-   </bottom>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="400.0" prefWidth="300.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color: rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="Full Name"/>
+                                <TextField fx:id="name"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="Age"/>
+                                <TextField fx:id="age"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="Address"/>
+                                <TextField fx:id="address"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="City"/>
+                                <TextField fx:id="city"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="ZIP Code"/>
+                                <TextField fx:id="zipcode"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="Email"/>
+                                <TextField fx:id="email"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)">
+                            <children>
+                                <Label text="Phone"/>
+                                <TextField fx:id="phone"/>
+                            </children>
+                        </VBox>
+                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+                              minWidth="-Infinity" prefHeight="100.0" prefWidth="657.0"
+                              style="-fx-background-color:  rgba(255,255,255,0.8)" BorderPane.alignment="CENTER">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#onBack" text="Back">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#onSubmit" text="Submit">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </center>
+    <top>
+        <Label text="Fitness Club" BorderPane.alignment="CENTER">
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <font>
+                <Font size="27.0"/>
+            </font>
+        </Label>
+    </top>
 </BorderPane>

@@ -19,11 +19,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         Parent root = FXMLLoader.load(getClass().getResource("/ui/main.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Fitness Club");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        new ServiceProvider().getUsers().forEach(c -> System.out.printf("%d\t%s\t%d\n", c.getIdCustomer(), c.getName(), c.getAge()));
     }
 
 
