@@ -5,13 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pl.pearvoid.fitnessclubcrm.jpa.ContactEntity;
-import pl.pearvoid.fitnessclubcrm.jpa.CustomerEntity;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.Timestamp;
-import java.time.Instant;
 
 public class Main extends Application {
 
@@ -23,7 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("Fitness Club");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        new ServiceProvider().getUsers().forEach(c -> System.out.printf("%d\t%s\t%d\n", c.getIdCustomer(), c.getName(), c.getAge()));
+        new ServiceProvider().getLastMonthClasses().forEach(c -> System.out.printf("%d\n", c.getIdClass()));
     }
 
 

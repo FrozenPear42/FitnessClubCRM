@@ -2,8 +2,12 @@ package pl.pearvoid.fitnessclubcrm;
 
 import pl.pearvoid.fitnessclubcrm.jpa.ContactEntity;
 import pl.pearvoid.fitnessclubcrm.jpa.CustomerEntity;
+import pl.pearvoid.fitnessclubcrm.jpa.LastMonthClassesEntity;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -38,6 +42,21 @@ public class ServiceProvider {
         ArrayList<CustomerEntity> entities = new ArrayList<>();
         try {
             entities = (ArrayList<CustomerEntity>) manager.createQuery("from CustomerEntity")
+                    .setMaxResults(100)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            manager.close();
+        }
+        return entities;
+    }
+
+    public Collection<LastMonthClassesEntity> getLastMonthClasses() {
+        EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        ArrayList<LastMonthClassesEntity> entities = new ArrayList<>();
+        try {
+            entities = (ArrayList<LastMonthClassesEntity>) manager.createQuery("from LastMonthClassesEntity")
                     .setMaxResults(100)
                     .getResultList();
         } catch (Exception e) {

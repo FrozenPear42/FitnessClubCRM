@@ -1,9 +1,6 @@
 package pl.pearvoid.fitnessclubcrm.jpa;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -17,6 +14,7 @@ public class LastMonthClassesEntity {
     private Integer mDuration;
 
     @Basic
+    @Id
     @Column(name = "idClass", nullable = false)
     public Integer getIdClass() {
         return mIdClass;
